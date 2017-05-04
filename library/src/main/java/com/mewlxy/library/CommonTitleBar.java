@@ -1,4 +1,4 @@
-package com.mewlxy.commontitlebar;
+package com.mewlxy.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -323,18 +323,19 @@ public class CommonTitleBar extends LinearLayout
             @Override
             public void onClick(View v)
             {
-                switch (v.getId())
+                int i = v.getId();
+                if (i == R.id.view_left)
                 {
-                    case R.id.view_left:
-                        onCommonClicklistener.onCustomLeftClick(v);
-                        break;
-                    case R.id.view_right:
-                        onCommonClicklistener.onCustomRightClick(v);
-                        break;
-                    case R.id.view_title:
-                    case R.id.et_title:
-                        onCommonClicklistener.onCustomSearchClick(v);
-                        break;
+                    onCommonClicklistener.onCustomLeftClick(v);
+
+                } else if (i == R.id.view_right)
+                {
+                    onCommonClicklistener.onCustomRightClick(v);
+
+                } else if (i == R.id.view_title || i == R.id.et_title)
+                {
+                    onCommonClicklistener.onCustomSearchClick(v);
+
                 }
             }
         };
