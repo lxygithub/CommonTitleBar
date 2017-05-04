@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
 
+
+group = 'com.mewlxy.CommonTitleBar'
+version = '1.0'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -21,11 +25,58 @@ android {
     }
 }
 
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs //source指定了源码位置
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+//这里dependsOn意为仅当generateJavadocs完成后才开始本task，和ant脚本也是对应的。
+task generateJavadocsJar(type: Jar, dependsOn: generateJavadocs) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+
+    pkg {
+        repo = 'maven'
+        name = 'com.mewlxy.CommonTitleBar'
+
+        version {
+            name = '1.0-release'
+            desc = "a common titlebar for android application"
+            vcsTag = '1.0'
+        }
+
+        licenses = ['Apache-2.0']
+        vcsUrl = 'git@github.com:lxygithub/CommonTitleBar.git'
+        websiteUrl = 'https://github.com/lxygithub/CommonTitleBar'
+    }
+
+    configurations = ['archives']
+
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
+    classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3"
+    classpath 'com.github.dcendents:android-maven-plugin:1.2'
     testCompile 'junit:junit:4.12'
 }
+apply plugin: 'com.jfrog.bintray'//添加bintray插件
+apply plugin: 'com.github.dcendents.android-maven'
