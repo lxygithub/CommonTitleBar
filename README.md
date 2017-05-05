@@ -200,4 +200,4 @@
     </dependency>
 
 #### gradle:
-compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0'
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0'
