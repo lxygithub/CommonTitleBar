@@ -14,7 +14,6 @@
         app:right_view_background="@android:color/holo_blue_bright"
         app:right_image="@drawable/ic_menu"
         app:title_bar_background="@android:color/holo_blue_bright"
-        app:title_text="我是标题"
-        app:title_text_size="20sp"/>
+        app:title_text="我是标题"/>
 
 </RelativeLayout>
