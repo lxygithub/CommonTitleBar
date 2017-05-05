@@ -2,7 +2,7 @@
 
 ![截图](screenshot/20170504230855.png)
 
-## 一些属性
+## 所有可定义属性
 
  <!--标题栏高度-->
         <attr name="title_bar_height" format="dimension|reference"/>
@@ -147,6 +147,24 @@
              app:title_text_size="20sp"
              app:title_visibility="false"/>
 
+## 一般使用
+
+    <com.mewlxy.library.CommonTitleBar
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:right_imageView_visibility="true"
+            app:left_view_background="@android:color/holo_blue_bright"
+            app:right_view_background="@android:color/holo_blue_bright"
+            app:right_image="@drawable/ic_menu"
+            app:title_bar_background="@android:color/holo_blue_bright"
+            app:title_text_size="20sp"
+            app:title_text="我是标题"/>
+## 效果
+
+![截图](screenshot/20170505141615.png)
+
+
 ## 点击事件
     CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.title);
     titleBar.setOnCustomClicklistener(new CommonTitleBar.OnCommonClicklistener()
@@ -170,3 +188,16 @@
             Toast.makeText(getApplicationContext(),"title click",Toast.LENGTH_SHORT).show();
         }
     });
+
+## 使用
+
+#### maven:
+    <dependency>
+      <groupId>com.mewlxy.commontitlebar</groupId>
+      <artifactId>CommonTitleBar</artifactId>
+      <version>1.0</version>
+      <type>pom</type>
+    </dependency>
+
+#### gradle:
+compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0'
