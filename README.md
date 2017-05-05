@@ -150,16 +150,12 @@
 ## 一般使用
 
     <com.mewlxy.library.CommonTitleBar
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:right_imageView_visibility="true"
-            app:left_view_background="@android:color/holo_blue_bright"
-            app:right_view_background="@android:color/holo_blue_bright"
-            app:right_image="@drawable/ic_menu"
-            app:title_bar_background="@android:color/holo_blue_bright"
-            app:title_text_size="20sp"
-            app:title_text="我是标题"/>
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:right_imageView_visibility="true"
+        app:title_bar_background="@android:color/holo_blue_bright"
+        app:title_text="我是标题"/>
 ## 效果
 
 ![截图](screenshot/20170505141615.png)

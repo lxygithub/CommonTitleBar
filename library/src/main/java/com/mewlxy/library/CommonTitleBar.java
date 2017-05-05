@@ -249,27 +249,27 @@ public class CommonTitleBar extends LinearLayout
         leftViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_left_view_visibility, true);
         leftTextViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_left_textView_visibility, false);
         leftImageViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_left_imageView_visibility, true);
-        leftViewBackground = typedArray.getColor(R.styleable.common_title_bar_left_view_background, ContextCompat.getColor(context, android.R.color.white));
+        leftViewBackground = typedArray.getColor(R.styleable.common_title_bar_left_view_background, getTitleBarBackground());
         leftText = typedArray.getString(R.styleable.common_title_bar_left_text);
         leftTextViewDrawable = typedArray.getResourceId(R.styleable.common_title_bar_left_textView_drawable, 0);
         leftTextSize = typedArray.getDimension(R.styleable.common_title_bar_left_text_size, dip2px(context,16));
         leftTextColor = typedArray.getColor(R.styleable.common_title_bar_left_text_color, ContextCompat.getColor(context, android.R.color.black));
-        leftTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_left_textView_background, ContextCompat.getColor(context, android.R.color.white));
+        leftTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_left_textView_background, getTitleBarBackground());
         leftImageDrawable = typedArray.getResourceId(R.styleable.common_title_bar_left_image, R.drawable.ic_back);
 
 
-        rightViewBackground = typedArray.getColor(R.styleable.common_title_bar_right_view_background, ContextCompat.getColor(context, android.R.color.white));
+        rightViewBackground = typedArray.getColor(R.styleable.common_title_bar_right_view_background, getTitleBarBackground());
         rightViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_right_view_visibility, true);
         rightTextViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_right_textView_visibility, false);
         rightImageViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_right_imageView_visibility, false);
         rightText = typedArray.getString(R.styleable.common_title_bar_right_text);
         rightTextSize = typedArray.getDimension(R.styleable.common_title_bar_right_text_size, dip2px(context,16));
         rightTextColor = typedArray.getColor(R.styleable.common_title_bar_right_text_color, ContextCompat.getColor(context, android.R.color.black));
-        rightTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_right_textView_background, ContextCompat.getColor(context, android.R.color.white));
-        rightImageDrawable = typedArray.getResourceId(R.styleable.common_title_bar_right_image, R.drawable.ic_back);
+        rightTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_right_textView_background, getTitleBarBackground());
+        rightImageDrawable = typedArray.getResourceId(R.styleable.common_title_bar_right_image, R.drawable.ic_menu);
 
 
-        middleViewBackground = typedArray.getColor(R.styleable.common_title_bar_middle_view_background, ContextCompat.getColor(context, android.R.color.white));
+        middleViewBackground = typedArray.getColor(R.styleable.common_title_bar_middle_view_background, getTitleBarBackground());
         titleTextViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_title_visibility, true);
         searchVisibility = typedArray.getBoolean(R.styleable.common_title_bar_search_visibility, false);
 
