@@ -185,15 +185,4 @@
         }
     });
 
-## 使用
 
-#### maven:
-    <dependency>
-      <groupId>com.mewlxy.commontitlebar</groupId>
-      <artifactId>CommonTitleBar</artifactId>
-      <version>1.0</version>
-      <type>pom</type>
-    </dependency>
-
-#### gradle:
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0'
