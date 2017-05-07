@@ -185,4 +185,19 @@
         }
     });
 
+## 加入到项目
+#### maven
+    <dependency>
+      <groupId>com.mewlxy.commontitlebar</groupId>
+      <artifactId>CommonTitleBar</artifactId>
+      <version>1.0.1</version>
+      <type>pom</type>
+    </dependency>
+#### gradle
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.1'
+#### lvy
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.1'
+    <dependency org='com.mewlxy.commontitlebar' name='CommonTitleBar' rev='1.0.1'>
+      <artifact name='CommonTitleBar' ext='pom' ></artifact>
+    </dependency>
 
