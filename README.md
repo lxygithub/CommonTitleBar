@@ -59,7 +59,7 @@
         <!--搜索框是否显示-->
         <attr name="search_visibility" format="boolean"/>
         <!--标题文字-->
-        <attr name="title_text" format="string|reference"/>
+        <attr name="title_txt" format="string|reference"/>
         <!--标题字号-->
         <attr name="title_text_size" format="dimension|reference"/>
         <!--标题文字颜色-->
@@ -141,7 +141,7 @@
              app:title_search_text_color="@android:color/darker_gray"
              app:title_search_text_gravity="left"
              app:title_search_text_size="14sp"
-             app:title_text="我是标题"
+             app:title_txt="我是标题"
              app:title_text_background="@android:color/white"
              app:title_text_color="@android:color/white"
              app:title_text_size="20sp"
@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         app:right_imageView_visibility="true"
         app:title_bar_background="@android:color/holo_blue_bright"
-        app:title_text="我是标题"/>
+        app:title_txt="我是标题"/>
 ## 效果
 
 ![截图](screenshot/20170505141615.png)
