@@ -225,7 +225,9 @@ public class CommonTitleBar extends LinearLayout
 
     private final static float DEFAULT_TITLE_BAR_HEIGHT = 50;
 
-    private OnCommonClicklistener onCommonClicklistener;
+    private OnClickListener leftClicklistener;
+    private OnClickListener rightClicklistener;
+    private OnClickListener searchClicklistener;
 
 
     public CommonTitleBar(Context context)
@@ -252,7 +254,7 @@ public class CommonTitleBar extends LinearLayout
         leftViewBackground = typedArray.getColor(R.styleable.common_title_bar_left_view_background, getTitleBarBackground());
         leftText = typedArray.getString(R.styleable.common_title_bar_left_text);
         leftTextViewDrawable = typedArray.getResourceId(R.styleable.common_title_bar_left_textView_drawable, 0);
-        leftTextSize = typedArray.getDimension(R.styleable.common_title_bar_left_text_size, dip2px(context,16));
+        leftTextSize = typedArray.getDimension(R.styleable.common_title_bar_left_text_size, dip2px(context, 16));
         leftTextColor = typedArray.getColor(R.styleable.common_title_bar_left_text_color, ContextCompat.getColor(context, android.R.color.black));
         leftTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_left_textView_background, getTitleBarBackground());
         leftImageDrawable = typedArray.getResourceId(R.styleable.common_title_bar_left_image, R.drawable.ic_back);
@@ -263,7 +265,7 @@ public class CommonTitleBar extends LinearLayout
         rightTextViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_right_textView_visibility, false);
         rightImageViewVisibility = typedArray.getBoolean(R.styleable.common_title_bar_right_imageView_visibility, false);
         rightText = typedArray.getString(R.styleable.common_title_bar_right_text);
-        rightTextSize = typedArray.getDimension(R.styleable.common_title_bar_right_text_size, dip2px(context,16));
+        rightTextSize = typedArray.getDimension(R.styleable.common_title_bar_right_text_size, dip2px(context, 16));
         rightTextColor = typedArray.getColor(R.styleable.common_title_bar_right_text_color, ContextCompat.getColor(context, android.R.color.black));
         rightTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_right_textView_background, getTitleBarBackground());
         rightImageDrawable = typedArray.getResourceId(R.styleable.common_title_bar_right_image, R.drawable.ic_menu);
@@ -275,7 +277,7 @@ public class CommonTitleBar extends LinearLayout
 
 
         titleText = typedArray.getString(R.styleable.common_title_bar_title_text);
-        titleTextSize = typedArray.getDimension(R.styleable.common_title_bar_title_text_size, dip2px(context,20));
+        titleTextSize = typedArray.getDimension(R.styleable.common_title_bar_title_text_size, dip2px(context, 20));
         titleTextColor = typedArray.getColor(R.styleable.common_title_bar_title_text_color, ContextCompat.getColor(context, android.R.color.black));
         titleTextViewBackground = typedArray.getColor(R.styleable.common_title_bar_title_text_color, ContextCompat.getColor(context, android.R.color.black));
 
@@ -292,7 +294,7 @@ public class CommonTitleBar extends LinearLayout
         etDrawableRight = typedArray.getResourceId(R.styleable.common_title_bar_title_search_drawableRight, 0);
 
         titleSearchTextColor = typedArray.getColor(R.styleable.common_title_bar_title_search_text_color, ContextCompat.getColor(context, android.R.color.black));
-        titleSearchTextSize = typedArray.getDimension(R.styleable.common_title_bar_title_search_text_size, dip2px(context,16));
+        titleSearchTextSize = typedArray.getDimension(R.styleable.common_title_bar_title_search_text_size, dip2px(context, 16));
         titleSearchBackground = typedArray.getResourceId(R.styleable.common_title_bar_title_search_background, R.drawable.bg_title_search);
         titleSearchTextGravity = typedArray.getInt(R.styleable.common_title_bar_title_search_text_gravity, 19);
 
@@ -317,30 +319,19 @@ public class CommonTitleBar extends LinearLayout
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
         etTitle = (EditText) view.findViewById(R.id.et_title);
 
-        OnClickListener listener = new OnClickListener()
+
+        if (leftClicklistener != null)
         {
-            @Override
-            public void onClick(View v)
-            {
-                int i = v.getId();
-                if (i == R.id.view_left)
-                {
-                    onCommonClicklistener.onCustomLeftClick(v);
-
-                } else if (i == R.id.view_right)
-                {
-                    onCommonClicklistener.onCustomRightClick(v);
-
-                } else if (i == R.id.view_title || i == R.id.et_title)
-                {
-                    onCommonClicklistener.onCustomSearchClick(v);
-
-                }
-            }
-        };
-        viewLeft.setOnClickListener(listener);
-        viewRight.setOnClickListener(listener);
-        viewTitle.setOnClickListener(listener);
+            viewLeft.setOnClickListener(leftClicklistener);
+        }
+        if (rightClicklistener != null)
+        {
+            viewRight.setOnClickListener(rightClicklistener);
+        }
+        if (searchClicklistener != null)
+        {
+            viewTitle.setOnClickListener(searchClicklistener);
+        }
 
 
         viewLeft.setVisibility(leftViewVisibility ? VISIBLE : INVISIBLE);
@@ -523,11 +514,6 @@ public class CommonTitleBar extends LinearLayout
     public void setEtTitle(EditText etTitle)
     {
         this.etTitle = etTitle;
-    }
-
-    public void setOnCustomClicklistener(OnCommonClicklistener onCommonClicklistener)
-    {
-        this.onCommonClicklistener = onCommonClicklistener;
     }
 
     public float getTitleBarHeight()
@@ -940,12 +926,18 @@ public class CommonTitleBar extends LinearLayout
         this.etDrawableRight = etDrawableRight;
     }
 
-    public interface OnCommonClicklistener
+    public void setLeftClicklistener(OnClickListener leftClicklistener)
     {
-        void onCustomLeftClick(View view);
+        this.leftClicklistener = leftClicklistener;
+    }
 
-        void onCustomRightClick(View view);
+    public void setRightClicklistener(OnClickListener rightClicklistener)
+    {
+        this.rightClicklistener = rightClicklistener;
+    }
 
-        void onCustomSearchClick(View view);
+    public void setSearchClicklistener(OnClickListener searchClicklistener)
+    {
+        this.searchClicklistener = searchClicklistener;
     }
 }
