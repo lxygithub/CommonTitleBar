@@ -224,7 +224,9 @@ public class CommonTitleBar extends LinearLayout
 
     private final static float DEFAULT_TITLE_BAR_HEIGHT = 50;
 
-    private OnCommonClicklistener onCommonClicklistener;
+    private OnClickListener leftClicklistener;
+    private OnClickListener rightClicklistener;
+    private OnClickListener searchClicklistener;
 
 
     public CommonTitleBar(Context context)
@@ -316,30 +318,19 @@ public class CommonTitleBar extends LinearLayout
         tvTitle = (TextView) view.findViewById(R.id.tv_title);
         etTitle = (EditText) view.findViewById(R.id.et_title);
 
-        OnClickListener listener = new OnClickListener()
+
+        if (leftClicklistener!=null)
         {
-            @Override
-            public void onClick(View v)
-            {
-                int i = v.getId();
-                if (i == R.id.view_left)
-                {
-                    onCommonClicklistener.onCustomLeftClick(v);
-
-                } else if (i == R.id.view_right)
-                {
-                    onCommonClicklistener.onCustomRightClick(v);
-
-                } else if (i == R.id.view_title || i == R.id.et_title)
-                {
-                    onCommonClicklistener.onCustomSearchClick(v);
-
-                }
-            }
-        };
-        viewLeft.setOnClickListener(listener);
-        viewRight.setOnClickListener(listener);
-        viewTitle.setOnClickListener(listener);
+            viewLeft.setOnClickListener(leftClicklistener);
+        }
+        if (rightClicklistener!=null)
+        {
+            viewRight.setOnClickListener(rightClicklistener);
+        }
+        if (searchClicklistener!=null)
+        {
+            viewTitle.setOnClickListener(searchClicklistener);
+        }
 
 
         viewLeft.setVisibility(leftViewVisibility ? VISIBLE : INVISIBLE);
@@ -524,10 +515,6 @@ public class CommonTitleBar extends LinearLayout
         this.etTitle = etTitle;
     }
 
-    public void setOnCustomClicklistener(OnCommonClicklistener onCommonClicklistener)
-    {
-        this.onCommonClicklistener = onCommonClicklistener;
-    }
 
     public float getTitleBarHeight()
     {
@@ -939,12 +926,18 @@ public class CommonTitleBar extends LinearLayout
         this.etDrawableRight = etDrawableRight;
     }
 
-    public interface OnCommonClicklistener
+    public void setLeftClicklistener(OnClickListener leftClicklistener)
     {
-        void onCustomLeftClick(View view);
+        this.leftClicklistener = leftClicklistener;
+    }
 
-        void onCustomRightClick(View view);
+    public void setRightClicklistener(OnClickListener rightClicklistener)
+    {
+        this.rightClicklistener = rightClicklistener;
+    }
 
-        void onCustomSearchClick(View view);
+    public void setSearchClicklistener(OnClickListener searchClicklistener)
+    {
+        this.searchClicklistener = searchClicklistener;
     }
 }
