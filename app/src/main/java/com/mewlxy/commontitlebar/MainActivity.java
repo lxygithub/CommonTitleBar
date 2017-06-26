@@ -17,23 +17,26 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.title);
-        titleBar.setOnCustomClicklistener(new CommonTitleBar.OnCommonClicklistener()
+        titleBar.setLeftClicklistener(new View.OnClickListener()
         {
-
             @Override
-            public void onCustomLeftClick(View view)
+            public void onClick(View v)
             {
                 Toast.makeText(getApplicationContext(),"left click",Toast.LENGTH_SHORT).show();
             }
-
+        });
+        titleBar.setRightClicklistener(new View.OnClickListener()
+        {
             @Override
-            public void onCustomRightClick(View view)
+            public void onClick(View v)
             {
                 Toast.makeText(getApplicationContext(),"right click",Toast.LENGTH_SHORT).show();
             }
-
+        });
+        titleBar.setSearchClicklistener(new View.OnClickListener()
+        {
             @Override
-            public void onCustomSearchClick(View view)
+            public void onClick(View v)
             {
                 Toast.makeText(getApplicationContext(),"title click",Toast.LENGTH_SHORT).show();
             }
