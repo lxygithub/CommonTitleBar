@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         app:right_imageView_visibility="true"
         app:title_bar_background="@android:color/holo_blue_bright"
-        app:title_text="我是标题"/>
+        app:title_txt="我是标题"/>
 
 </RelativeLayout>
