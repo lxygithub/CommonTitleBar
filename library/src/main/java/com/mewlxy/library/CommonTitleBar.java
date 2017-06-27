@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by master on 2017/5/1.
@@ -319,20 +320,6 @@ public class CommonTitleBar extends LinearLayout
         etTitle = (EditText) view.findViewById(R.id.et_title);
 
 
-        if (leftClicklistener!=null)
-        {
-            viewLeft.setOnClickListener(leftClicklistener);
-        }
-        if (rightClicklistener!=null)
-        {
-            viewRight.setOnClickListener(rightClicklistener);
-        }
-        if (searchClicklistener!=null)
-        {
-            viewTitle.setOnClickListener(searchClicklistener);
-        }
-
-
         viewLeft.setVisibility(leftViewVisibility ? VISIBLE : INVISIBLE);
         viewLeft.setBackgroundColor(leftViewBackground);
 
@@ -398,6 +385,28 @@ public class CommonTitleBar extends LinearLayout
 
         ivRight.setVisibility(rightImageViewVisibility ? VISIBLE : INVISIBLE);
         ivRight.setImageResource(rightImageDrawable);
+
+        //view绘制完成之后才能添加点击时间的监听，这里要延时处理
+        this.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                if (leftClicklistener!=null)
+                {
+                    viewLeft.setOnClickListener(leftClicklistener);
+                }
+
+                if (rightClicklistener!=null)
+                {
+                    viewRight.setOnClickListener(rightClicklistener);
+                }
+                if (searchClicklistener!=null)
+                {
+                    viewTitle.setOnClickListener(searchClicklistener);
+                }
+            }
+        });
 
 
     }
