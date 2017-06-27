@@ -193,14 +193,14 @@
     <dependency>
       <groupId>com.mewlxy.commontitlebar</groupId>
       <artifactId>CommonTitleBar</artifactId>
-      <version>1.0.3</version>
+      <version>1.0.4</version>
       <type>pom</type>
     </dependency>
 #### gradle
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.3'
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.4'
 #### lvy
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.3'
-    <dependency org='com.mewlxy.commontitlebar' name='CommonTitleBar' rev='1.0.3'>
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.4'
+    <dependency org='com.mewlxy.commontitlebar' name='CommonTitleBar' rev='1.0.4'>
       <artifact name='CommonTitleBar' ext='pom' ></artifact>
     </dependency>
 
