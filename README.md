@@ -4,8 +4,6 @@
 
 ## 所有可定义属性
 
- <!--标题栏高度-->
-        <attr name="title_bar_height" format="dimension|reference"/>
         <!--标题栏整体背景-->
         <attr name="title_bar_background" format="color|reference"/>
 
@@ -163,44 +161,44 @@
 
 ## 点击事件
     CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.title);
-    titleBar.setLeftClicklistener(new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View v)
-        {
-            Toast.makeText(getApplicationContext(),"left click",Toast.LENGTH_SHORT).show();
-        }
-    });
-    titleBar.setRightClicklistener(new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View v)
-        {
-            Toast.makeText(getApplicationContext(),"right click",Toast.LENGTH_SHORT).show();
-        }
-    });
-    titleBar.setSearchClicklistener(new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View v)
-        {
-            Toast.makeText(getApplicationContext(),"title click",Toast.LENGTH_SHORT).show();
-        }
-    });
+    titleBar.setOnLeftClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(getApplicationContext(),"left click",Toast.LENGTH_SHORT).show();
+                }
+            });
+            titleBar.setOnRightClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(getApplicationContext(),"right click",Toast.LENGTH_SHORT).show();
+                }
+            });
+            titleBar.setOnSearchClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    Toast.makeText(getApplicationContext(),"title click",Toast.LENGTH_SHORT).show();
+                }
+            });
 
 ## 加入到项目
 #### maven
     <dependency>
       <groupId>com.mewlxy.commontitlebar</groupId>
       <artifactId>CommonTitleBar</artifactId>
-      <version>1.0.4</version>
+      <version>1.1.0</version>
       <type>pom</type>
     </dependency>
 #### gradle
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.4'
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.1.0'
 #### lvy
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.0.4'
-    <dependency org='com.mewlxy.commontitlebar' name='CommonTitleBar' rev='1.0.4'>
+    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.1.0'
+    <dependency org='com.mewlxy.commontitlebar' name='CommonTitleBar' rev='1.1.0'>
       <artifact name='CommonTitleBar' ext='pom' ></artifact>
     </dependency>
 
