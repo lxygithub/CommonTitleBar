@@ -8,7 +8,7 @@
     <com.mewlxy.library.CommonTitleBar
         android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         app:right_imageView_visibility="true"
         app:title_bar_background="@android:color/holo_blue_bright"
         app:title_txt="我是标题"/>

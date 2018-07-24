@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="common_title_bar">
-        <!--标题栏高度-->
-        <attr name="title_bar_height" format="dimension|reference"/>
+    <declare-styleable name="CommonTitleBar">
         <!--标题栏整体背景-->
         <attr name="title_bar_background" format="color|reference"/>
 

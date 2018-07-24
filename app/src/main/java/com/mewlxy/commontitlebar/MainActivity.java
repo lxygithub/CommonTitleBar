@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.title);
-        titleBar.setLeftClicklistener(new View.OnClickListener()
+        titleBar.setOnLeftClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(),"left click",Toast.LENGTH_SHORT).show();
             }
         });
-        titleBar.setRightClicklistener(new View.OnClickListener()
+        titleBar.setOnRightClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(),"right click",Toast.LENGTH_SHORT).show();
             }
         });
-        titleBar.setSearchClicklistener(new View.OnClickListener()
+        titleBar.setOnSearchClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -41,5 +41,7 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(),"title click",Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 }
