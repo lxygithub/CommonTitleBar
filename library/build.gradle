@@ -40,13 +40,13 @@ publish {
     userOrg = 'misakamikoto'//bintray.com 用户名/组织名 user/org name
     groupId = 'com.mewlxy.commontitlebar'//JCenter上显示的路径 path
     artifactId = 'CommonTitleBar'//项目名称 project name
-    publishVersion = '1.0.4'//版本号 version code
+    publishVersion = '1.1.0'//版本号 version code
     desc = 'this is a common titlebar for android'//项目描述 description
     website = 'https://github.com/lxygithub/CommonTitleBar' //项目网址链接 link
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
 
