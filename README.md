@@ -161,28 +161,30 @@
 
 ## 点击事件
     CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.title);
-    titleBar.setOnLeftClickListener(new View.OnClickListener()
+    titleBar.setTitleText("cddddd")
+                    .setRightImageViewVisibility(false)
+                    .setRightTextViewVisibility(true)
+                    .setRightText("测试")
+                    .setOnLeftClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getApplicationContext(),"left click",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "left click", Toast.LENGTH_SHORT).show();
                 }
-            });
-            titleBar.setOnRightClickListener(new View.OnClickListener()
+            }).setOnRightClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getApplicationContext(),"right click",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "right click", Toast.LENGTH_SHORT).show();
                 }
-            });
-            titleBar.setOnSearchClickListener(new View.OnClickListener()
+            }).setOnSearchClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    Toast.makeText(getApplicationContext(),"title click",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "title click", Toast.LENGTH_SHORT).show();
                 }
             });
 
