@@ -467,10 +467,11 @@ public class CommonTitleBar extends LinearLayout
         return viewLeft;
     }
 
-    public void setViewLeft(View viewLeft)
+    public CommonTitleBar setViewLeft(View viewLeft)
     {
         this.viewLeft = viewLeft;
-        invalidate();
+        initView();
+        return this;
     }
 
     public TextView getTvLeft()
@@ -478,10 +479,11 @@ public class CommonTitleBar extends LinearLayout
         return tvLeft;
     }
 
-    public void setTvLeft(TextView tvLeft)
+    public CommonTitleBar setTvLeft(TextView tvLeft)
     {
         this.tvLeft = tvLeft;
-        invalidate();
+        initView();
+        return this;
     }
 
     public ImageView getIvLeft()
@@ -489,10 +491,11 @@ public class CommonTitleBar extends LinearLayout
         return ivLeft;
     }
 
-    public void setIvLeft(ImageView ivLeft)
+    public CommonTitleBar setIvLeft(ImageView ivLeft)
     {
         this.ivLeft = ivLeft;
-        invalidate();
+        initView();
+        return this;
     }
 
     public View getViewRight()
@@ -500,10 +503,11 @@ public class CommonTitleBar extends LinearLayout
         return viewRight;
     }
 
-    public void setViewRight(View viewRight)
+    public CommonTitleBar setViewRight(View viewRight)
     {
         this.viewRight = viewRight;
-        invalidate();
+        initView();
+        return this;
     }
 
     public TextView getTvRight()
@@ -511,10 +515,11 @@ public class CommonTitleBar extends LinearLayout
         return tvRight;
     }
 
-    public void setTvRight(TextView tvRight)
+    public CommonTitleBar setTvRight(TextView tvRight)
     {
         this.tvRight = tvRight;
-        invalidate();
+        initView();
+        return this;
     }
 
     public ImageView getIvRight()
@@ -522,10 +527,11 @@ public class CommonTitleBar extends LinearLayout
         return ivRight;
     }
 
-    public void setIvRight(ImageView ivRight)
+    public CommonTitleBar setIvRight(ImageView ivRight)
     {
         this.ivRight = ivRight;
-        invalidate();
+        initView();
+        return this;
     }
 
     public View getViewTitle()
@@ -533,10 +539,11 @@ public class CommonTitleBar extends LinearLayout
         return viewTitle;
     }
 
-    public void setViewTitle(View viewTitle)
+    public CommonTitleBar setViewTitle(View viewTitle)
     {
         this.viewTitle = viewTitle;
-        invalidate();
+        initView();
+        return this;
     }
 
     public TextView getTvTitle()
@@ -544,10 +551,11 @@ public class CommonTitleBar extends LinearLayout
         return tvTitle;
     }
 
-    public void setTvTitle(TextView tvTitle)
+    public CommonTitleBar setTvTitle(TextView tvTitle)
     {
         this.tvTitle = tvTitle;
-        invalidate();
+        initView();
+        return this;
     }
 
     public EditText getEtTitle()
@@ -555,10 +563,11 @@ public class CommonTitleBar extends LinearLayout
         return etTitle;
     }
 
-    public void setEtTitle(EditText etTitle)
+    public CommonTitleBar setEtTitle(EditText etTitle)
     {
         this.etTitle = etTitle;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getTitleBarBackground()
@@ -566,10 +575,11 @@ public class CommonTitleBar extends LinearLayout
         return titleBarBackground;
     }
 
-    public void setTitleBarBackground(int titleBarBackground)
+    public CommonTitleBar setTitleBarBackground(int titleBarBackground)
     {
         this.titleBarBackground = titleBarBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isLeftViewVisibility()
@@ -577,10 +587,11 @@ public class CommonTitleBar extends LinearLayout
         return leftViewVisibility;
     }
 
-    public void setLeftViewVisibility(boolean leftViewVisibility)
+    public CommonTitleBar setLeftViewVisibility(boolean leftViewVisibility)
     {
         this.leftViewVisibility = leftViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isLeftTextViewVisibility()
@@ -588,10 +599,11 @@ public class CommonTitleBar extends LinearLayout
         return leftTextViewVisibility;
     }
 
-    public void setLeftTextViewVisibility(boolean leftTextViewVisibility)
+    public CommonTitleBar setLeftTextViewVisibility(boolean leftTextViewVisibility)
     {
         this.leftTextViewVisibility = leftTextViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isLeftImageViewVisibility()
@@ -599,10 +611,11 @@ public class CommonTitleBar extends LinearLayout
         return leftImageViewVisibility;
     }
 
-    public void setLeftImageViewVisibility(boolean leftImageViewVisibility)
+    public CommonTitleBar setLeftImageViewVisibility(boolean leftImageViewVisibility)
     {
         this.leftImageViewVisibility = leftImageViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getLeftViewBackground()
@@ -610,10 +623,11 @@ public class CommonTitleBar extends LinearLayout
         return leftViewBackground;
     }
 
-    public void setLeftViewBackground(int leftViewBackground)
+    public CommonTitleBar setLeftViewBackground(int leftViewBackground)
     {
         this.leftViewBackground = leftViewBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public String getLeftText()
@@ -621,10 +635,11 @@ public class CommonTitleBar extends LinearLayout
         return leftText;
     }
 
-    public void setLeftText(String leftText)
+    public CommonTitleBar setLeftText(String leftText)
     {
         this.leftText = leftText;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getLeftTextViewDrawable()
@@ -632,10 +647,11 @@ public class CommonTitleBar extends LinearLayout
         return leftTextViewDrawable;
     }
 
-    public void setLeftTextViewDrawable(int leftTextViewDrawable)
+    public CommonTitleBar setLeftTextViewDrawable(int leftTextViewDrawable)
     {
         this.leftTextViewDrawable = leftTextViewDrawable;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getLeftTextSize()
@@ -643,10 +659,11 @@ public class CommonTitleBar extends LinearLayout
         return leftTextSize;
     }
 
-    public void setLeftTextSize(float leftTextSize)
+    public CommonTitleBar setLeftTextSize(float leftTextSize)
     {
         this.leftTextSize = leftTextSize;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getLeftTextColor()
@@ -654,10 +671,11 @@ public class CommonTitleBar extends LinearLayout
         return leftTextColor;
     }
 
-    public void setLeftTextColor(int leftTextColor)
+    public CommonTitleBar setLeftTextColor(int leftTextColor)
     {
         this.leftTextColor = leftTextColor;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getLeftTextViewBackground()
@@ -665,10 +683,11 @@ public class CommonTitleBar extends LinearLayout
         return leftTextViewBackground;
     }
 
-    public void setLeftTextViewBackground(int leftTextViewBackground)
+    public CommonTitleBar setLeftTextViewBackground(int leftTextViewBackground)
     {
         this.leftTextViewBackground = leftTextViewBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getLeftImageDrawable()
@@ -676,10 +695,11 @@ public class CommonTitleBar extends LinearLayout
         return leftImageDrawable;
     }
 
-    public void setLeftImageDrawable(int leftImageDrawable)
+    public CommonTitleBar setLeftImageDrawable(int leftImageDrawable)
     {
         this.leftImageDrawable = leftImageDrawable;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getRightViewBackground()
@@ -687,10 +707,11 @@ public class CommonTitleBar extends LinearLayout
         return rightViewBackground;
     }
 
-    public void setRightViewBackground(int rightViewBackground)
+    public CommonTitleBar setRightViewBackground(int rightViewBackground)
     {
         this.rightViewBackground = rightViewBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isRightViewVisibility()
@@ -698,10 +719,11 @@ public class CommonTitleBar extends LinearLayout
         return rightViewVisibility;
     }
 
-    public void setRightViewVisibility(boolean rightViewVisibility)
+    public CommonTitleBar setRightViewVisibility(boolean rightViewVisibility)
     {
         this.rightViewVisibility = rightViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isRightTextViewVisibility()
@@ -709,10 +731,11 @@ public class CommonTitleBar extends LinearLayout
         return rightTextViewVisibility;
     }
 
-    public void setRightTextViewVisibility(boolean rightTextViewVisibility)
+    public CommonTitleBar setRightTextViewVisibility(boolean rightTextViewVisibility)
     {
         this.rightTextViewVisibility = rightTextViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isRightImageViewVisibility()
@@ -720,10 +743,11 @@ public class CommonTitleBar extends LinearLayout
         return rightImageViewVisibility;
     }
 
-    public void setRightImageViewVisibility(boolean rightImageViewVisibility)
+    public CommonTitleBar setRightImageViewVisibility(boolean rightImageViewVisibility)
     {
         this.rightImageViewVisibility = rightImageViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public String getRightText()
@@ -731,10 +755,11 @@ public class CommonTitleBar extends LinearLayout
         return rightText;
     }
 
-    public void setRightText(String rightText)
+    public CommonTitleBar setRightText(String rightText)
     {
         this.rightText = rightText;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getRightTextSize()
@@ -742,10 +767,11 @@ public class CommonTitleBar extends LinearLayout
         return rightTextSize;
     }
 
-    public void setRightTextSize(float rightTextSize)
+    public CommonTitleBar setRightTextSize(float rightTextSize)
     {
         this.rightTextSize = rightTextSize;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getRightTextColor()
@@ -753,10 +779,11 @@ public class CommonTitleBar extends LinearLayout
         return rightTextColor;
     }
 
-    public void setRightTextColor(int rightTextColor)
+    public CommonTitleBar setRightTextColor(int rightTextColor)
     {
         this.rightTextColor = rightTextColor;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getRightTextViewBackground()
@@ -764,10 +791,11 @@ public class CommonTitleBar extends LinearLayout
         return rightTextViewBackground;
     }
 
-    public void setRightTextViewBackground(int rightTextViewBackground)
+    public CommonTitleBar setRightTextViewBackground(int rightTextViewBackground)
     {
         this.rightTextViewBackground = rightTextViewBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getRightImageDrawable()
@@ -775,10 +803,11 @@ public class CommonTitleBar extends LinearLayout
         return rightImageDrawable;
     }
 
-    public void setRightImageDrawable(int rightImageDrawable)
+    public CommonTitleBar setRightImageDrawable(int rightImageDrawable)
     {
         this.rightImageDrawable = rightImageDrawable;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getMiddleViewBackground()
@@ -786,10 +815,11 @@ public class CommonTitleBar extends LinearLayout
         return middleViewBackground;
     }
 
-    public void setMiddleViewBackground(int middleViewBackground)
+    public CommonTitleBar setMiddleViewBackground(int middleViewBackground)
     {
         this.middleViewBackground = middleViewBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isTitleTextViewVisibility()
@@ -797,10 +827,11 @@ public class CommonTitleBar extends LinearLayout
         return titleTextViewVisibility;
     }
 
-    public void setTitleTextViewVisibility(boolean titleTextViewVisibility)
+    public CommonTitleBar setTitleTextViewVisibility(boolean titleTextViewVisibility)
     {
         this.titleTextViewVisibility = titleTextViewVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public boolean isSearchVisibility()
@@ -808,10 +839,11 @@ public class CommonTitleBar extends LinearLayout
         return searchVisibility;
     }
 
-    public void setSearchVisibility(boolean searchVisibility)
+    public CommonTitleBar setSearchVisibility(boolean searchVisibility)
     {
         this.searchVisibility = searchVisibility;
-        invalidate();
+        initView();
+        return this;
     }
 
     public String getTitleText()
@@ -819,10 +851,11 @@ public class CommonTitleBar extends LinearLayout
         return titleText;
     }
 
-    public void setTitleText(String titleText)
+    public CommonTitleBar setTitleText(String titleText)
     {
         this.titleText = titleText;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getTitleTextSize()
@@ -830,10 +863,11 @@ public class CommonTitleBar extends LinearLayout
         return titleTextSize;
     }
 
-    public void setTitleTextSize(float titleTextSize)
+    public CommonTitleBar setTitleTextSize(float titleTextSize)
     {
         this.titleTextSize = titleTextSize;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getTitleTextColor()
@@ -841,10 +875,11 @@ public class CommonTitleBar extends LinearLayout
         return titleTextColor;
     }
 
-    public void setTitleTextColor(int titleTextColor)
+    public CommonTitleBar setTitleTextColor(int titleTextColor)
     {
         this.titleTextColor = titleTextColor;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getTitleTextViewBackground()
@@ -852,10 +887,11 @@ public class CommonTitleBar extends LinearLayout
         return titleTextViewBackground;
     }
 
-    public void setTitleTextViewBackground(int titleTextViewBackground)
+    public CommonTitleBar setTitleTextViewBackground(int titleTextViewBackground)
     {
         this.titleTextViewBackground = titleTextViewBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public String getSearchHint()
@@ -863,10 +899,11 @@ public class CommonTitleBar extends LinearLayout
         return searchHint;
     }
 
-    public void setSearchHint(String searchHint)
+    public CommonTitleBar setSearchHint(String searchHint)
     {
         this.searchHint = searchHint;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getSearchHintColor()
@@ -874,10 +911,11 @@ public class CommonTitleBar extends LinearLayout
         return searchHintColor;
     }
 
-    public void setSearchHintColor(int searchHintColor)
+    public CommonTitleBar setSearchHintColor(int searchHintColor)
     {
         this.searchHintColor = searchHintColor;
-        invalidate();
+        initView();
+        return this;
     }
 
     public String getTitleSearchText()
@@ -885,10 +923,11 @@ public class CommonTitleBar extends LinearLayout
         return titleSearchText;
     }
 
-    public void setTitleSearchText(String titleSearchText)
+    public CommonTitleBar setTitleSearchText(String titleSearchText)
     {
         this.titleSearchText = titleSearchText;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getTitleSearchTextColor()
@@ -896,10 +935,11 @@ public class CommonTitleBar extends LinearLayout
         return titleSearchTextColor;
     }
 
-    public void setTitleSearchTextColor(int titleSearchTextColor)
+    public CommonTitleBar setTitleSearchTextColor(int titleSearchTextColor)
     {
         this.titleSearchTextColor = titleSearchTextColor;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getTitleSearchTextSize()
@@ -907,10 +947,11 @@ public class CommonTitleBar extends LinearLayout
         return titleSearchTextSize;
     }
 
-    public void setTitleSearchTextSize(float titleSearchTextSize)
+    public CommonTitleBar setTitleSearchTextSize(float titleSearchTextSize)
     {
         this.titleSearchTextSize = titleSearchTextSize;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getTitleSearchBackground()
@@ -918,10 +959,11 @@ public class CommonTitleBar extends LinearLayout
         return titleSearchBackground;
     }
 
-    public void setTitleSearchBackground(int titleSearchBackground)
+    public CommonTitleBar setTitleSearchBackground(int titleSearchBackground)
     {
         this.titleSearchBackground = titleSearchBackground;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getTitleSearchTextGravity()
@@ -929,10 +971,11 @@ public class CommonTitleBar extends LinearLayout
         return titleSearchTextGravity;
     }
 
-    public void setTitleSearchTextGravity(int titleSearchTextGravity)
+    public CommonTitleBar setTitleSearchTextGravity(int titleSearchTextGravity)
     {
         this.titleSearchTextGravity = titleSearchTextGravity;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getEtSearchPaddingLeft()
@@ -940,10 +983,11 @@ public class CommonTitleBar extends LinearLayout
         return etSearchPaddingLeft;
     }
 
-    public void setEtSearchPaddingLeft(float etSearchPaddingLeft)
+    public CommonTitleBar setEtSearchPaddingLeft(float etSearchPaddingLeft)
     {
         this.etSearchPaddingLeft = etSearchPaddingLeft;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getEtSearchPaddingTop()
@@ -951,10 +995,11 @@ public class CommonTitleBar extends LinearLayout
         return etSearchPaddingTop;
     }
 
-    public void setEtSearchPaddingTop(float etSearchPaddingTop)
+    public CommonTitleBar setEtSearchPaddingTop(float etSearchPaddingTop)
     {
         this.etSearchPaddingTop = etSearchPaddingTop;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getEtSearchPaddingRight()
@@ -962,10 +1007,11 @@ public class CommonTitleBar extends LinearLayout
         return etSearchPaddingRight;
     }
 
-    public void setEtSearchPaddingRight(float etSearchPaddingRight)
+    public CommonTitleBar setEtSearchPaddingRight(float etSearchPaddingRight)
     {
         this.etSearchPaddingRight = etSearchPaddingRight;
-        invalidate();
+        initView();
+        return this;
     }
 
     public float getEtSearchPaddingBottom()
@@ -973,10 +1019,11 @@ public class CommonTitleBar extends LinearLayout
         return etSearchPaddingBottom;
     }
 
-    public void setEtSearchPaddingBottom(float etSearchPaddingBottom)
+    public CommonTitleBar setEtSearchPaddingBottom(float etSearchPaddingBottom)
     {
         this.etSearchPaddingBottom = etSearchPaddingBottom;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getEtDrawableLeft()
@@ -984,10 +1031,11 @@ public class CommonTitleBar extends LinearLayout
         return etDrawableLeft;
     }
 
-    public void setEtDrawableLeft(int etDrawableLeft)
+    public CommonTitleBar setEtDrawableLeft(int etDrawableLeft)
     {
         this.etDrawableLeft = etDrawableLeft;
-        invalidate();
+        initView();
+        return this;
     }
 
     public int getEtDrawableRight()
@@ -995,24 +1043,28 @@ public class CommonTitleBar extends LinearLayout
         return etDrawableRight;
     }
 
-    public void setEtDrawableRight(int etDrawableRight)
+    public CommonTitleBar setEtDrawableRight(int etDrawableRight)
     {
         this.etDrawableRight = etDrawableRight;
-        invalidate();
+        initView();
+        return this;
     }
 
-    public void setOnLeftClickListener(OnClickListener onLeftClickListener)
+    public CommonTitleBar setOnLeftClickListener(OnClickListener onLeftClickListener)
     {
         this.OnLeftClickListener = onLeftClickListener;
+        return this;
     }
 
-    public void setOnRightClickListener(OnClickListener onRightClickListener)
+    public CommonTitleBar setOnRightClickListener(OnClickListener onRightClickListener)
     {
         this.OnRightClickListener = onRightClickListener;
+        return this;
     }
 
-    public void setOnSearchClickListener(OnClickListener onSearchClickListener)
+    public CommonTitleBar setOnSearchClickListener(OnClickListener onSearchClickListener)
     {
         this.OnSearchClickListener = onSearchClickListener;
+        return this;
     }
 }
