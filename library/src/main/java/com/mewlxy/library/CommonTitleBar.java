@@ -5,19 +5,17 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
  * Created by master on 2017/5/1.
  */
 
-public class CommonTitleBar extends LinearLayout
-{
+public class CommonTitleBar extends FrameLayout {
     private Context context;
 
 
@@ -218,25 +216,22 @@ public class CommonTitleBar extends LinearLayout
      */
     private int etDrawableRight;
 
-    private final static float DEFAULT_TITLE_BAR_HEIGHT = 45;
 
     private OnClickListener OnLeftClickListener;
     private OnClickListener OnRightClickListener;
     private OnClickListener OnSearchClickListener;
+    private View commonTitleView;
 
 
-    public CommonTitleBar(Context context)
-    {
+    public CommonTitleBar(Context context) {
         this(context, null, 0);
     }
 
-    public CommonTitleBar(Context context, AttributeSet attrs)
-    {
+    public CommonTitleBar(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CommonTitleBar(Context context, AttributeSet attrs, int defStyleAttr)
-    {
+    public CommonTitleBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonTitleBar);
@@ -297,21 +292,20 @@ public class CommonTitleBar extends LinearLayout
     }
 
 
-    private void initView()
-    {
-        View view = LayoutInflater.from(context).inflate(R.layout.common_title, this, true);
+    private void initView() {
+        commonTitleView = inflate(getContext(), R.layout.common_title, this);
 
-        viewLeft = view.findViewById(R.id.view_left);
-        tvLeft = (TextView) view.findViewById(R.id.tv_title_left);
-        ivLeft = (ImageView) view.findViewById(R.id.iv_title_left);
+        viewLeft = commonTitleView.findViewById(R.id.view_left);
+        tvLeft = (TextView) commonTitleView.findViewById(R.id.tv_title_left);
+        ivLeft = (ImageView) commonTitleView.findViewById(R.id.iv_title_left);
 
-        viewRight = view.findViewById(R.id.view_right);
-        tvRight = (TextView) view.findViewById(R.id.tv_title_right);
-        ivRight = (ImageView) view.findViewById(R.id.iv_title_right);
+        viewRight = commonTitleView.findViewById(R.id.view_right);
+        tvRight = (TextView) commonTitleView.findViewById(R.id.tv_title_right);
+        ivRight = (ImageView) commonTitleView.findViewById(R.id.iv_title_right);
 
-        viewTitle = view.findViewById(R.id.view_title);
-        tvTitle = (TextView) view.findViewById(R.id.tv_title);
-        etTitle = (EditText) view.findViewById(R.id.et_title);
+        viewTitle = commonTitleView.findViewById(R.id.view_title);
+        tvTitle = (TextView) commonTitleView.findViewById(R.id.tv_title);
+        etTitle = (EditText) commonTitleView.findViewById(R.id.et_title);
 
 
         viewLeft.setVisibility(leftViewVisibility ? VISIBLE : INVISIBLE);
@@ -320,8 +314,7 @@ public class CommonTitleBar extends LinearLayout
 
         tvLeft.setVisibility(leftTextViewVisibility ? VISIBLE : INVISIBLE);
         tvLeft.setText(leftText);
-        if (leftTextViewDrawable != 0)
-        {
+        if (leftTextViewDrawable != 0) {
             Drawable drawable = getResources().getDrawable(leftImageDrawable);
             drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
             tvLeft.setCompoundDrawables(drawable, null, null, null);
@@ -351,13 +344,11 @@ public class CommonTitleBar extends LinearLayout
                 dip2px(etSearchPaddingBottom));
         Drawable drawableLeft = null;
         Drawable drawableRight = null;
-        if (etDrawableLeft != 0)
-        {
+        if (etDrawableLeft != 0) {
             drawableLeft = getResources().getDrawable(etDrawableLeft);
             drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
         }
-        if (etDrawableRight != 0)
-        {
+        if (etDrawableRight != 0) {
             drawableRight = getResources().getDrawable(etDrawableRight);
             drawableRight.setBounds(0, 0, drawableRight.getMinimumWidth(), drawableRight.getMinimumHeight());
         }
@@ -380,23 +371,18 @@ public class CommonTitleBar extends LinearLayout
         ivRight.setVisibility(rightImageViewVisibility ? VISIBLE : INVISIBLE);
         ivRight.setImageResource(rightImageDrawable);
 
-        //view绘制完成之后才能添加点击时间的监听，这里要延时处理
-        this.post(new Runnable()
-        {
+        //view绘制完成之后才能添加点击时间的监听
+        this.post(new Runnable() {
             @Override
-            public void run()
-            {
-                if (OnLeftClickListener != null)
-                {
+            public void run() {
+                if (OnLeftClickListener != null) {
                     viewLeft.setOnClickListener(OnLeftClickListener);
                 }
 
-                if (OnRightClickListener != null)
-                {
+                if (OnRightClickListener != null) {
                     viewRight.setOnClickListener(OnRightClickListener);
                 }
-                if (OnSearchClickListener != null)
-                {
+                if (OnSearchClickListener != null) {
                     viewTitle.setOnClickListener(OnSearchClickListener);
                 }
             }
@@ -406,664 +392,526 @@ public class CommonTitleBar extends LinearLayout
     }
 
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-    {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int width = MeasureSpec.getSize(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(widthMeasureSpec);
-        int height = MeasureSpec.getSize(heightMeasureSpec);
-        switch (widthMode)
-        {
-            case MeasureSpec.AT_MOST:
-            case MeasureSpec.UNSPECIFIED:
-                width = screenWidth();
-                break;
-            case MeasureSpec.EXACTLY:
-                width = MeasureSpec.getSize(widthMeasureSpec);
-                break;
-        }
-        switch (heightMode)
-        {
-            case MeasureSpec.AT_MOST:
-            case MeasureSpec.UNSPECIFIED:
-                height = dip2px(DEFAULT_TITLE_BAR_HEIGHT);
-                break;
-            case MeasureSpec.EXACTLY:
-                height = MeasureSpec.getSize(heightMeasureSpec);
-                break;
-        }
-
-        setMeasuredDimension(width, height);
-    }
-
-
-    private int screenWidth()
-    {
+    private int screenWidth() {
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 
-    private int screenHeight()
-    {
+    private int screenHeight() {
         return context.getResources().getDisplayMetrics().heightPixels;
     }
 
-    private int dip2px(float dpValue)
-    {
+    private int dip2px(float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 
 
-    private int px2dip(float pxValue)
-    {
+    private int px2dip(float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
 
-    public View getViewLeft()
-    {
+    public View getViewLeft() {
         return viewLeft;
     }
 
-    public CommonTitleBar setViewLeft(View viewLeft)
-    {
+    public CommonTitleBar setViewLeft(View viewLeft) {
         this.viewLeft = viewLeft;
         initView();
         return this;
     }
 
-    public TextView getTvLeft()
-    {
+    public TextView getTvLeft() {
         return tvLeft;
     }
 
-    public CommonTitleBar setTvLeft(TextView tvLeft)
-    {
+    public CommonTitleBar setTvLeft(TextView tvLeft) {
         this.tvLeft = tvLeft;
         initView();
         return this;
     }
 
-    public ImageView getIvLeft()
-    {
+    public ImageView getIvLeft() {
         return ivLeft;
     }
 
-    public CommonTitleBar setIvLeft(ImageView ivLeft)
-    {
+    public CommonTitleBar setIvLeft(ImageView ivLeft) {
         this.ivLeft = ivLeft;
         initView();
         return this;
     }
 
-    public View getViewRight()
-    {
+    public View getViewRight() {
         return viewRight;
     }
 
-    public CommonTitleBar setViewRight(View viewRight)
-    {
+    public CommonTitleBar setViewRight(View viewRight) {
         this.viewRight = viewRight;
         initView();
         return this;
     }
 
-    public TextView getTvRight()
-    {
+    public TextView getTvRight() {
         return tvRight;
     }
 
-    public CommonTitleBar setTvRight(TextView tvRight)
-    {
+    public CommonTitleBar setTvRight(TextView tvRight) {
         this.tvRight = tvRight;
         initView();
         return this;
     }
 
-    public ImageView getIvRight()
-    {
+    public ImageView getIvRight() {
         return ivRight;
     }
 
-    public CommonTitleBar setIvRight(ImageView ivRight)
-    {
+    public CommonTitleBar setIvRight(ImageView ivRight) {
         this.ivRight = ivRight;
         initView();
         return this;
     }
 
-    public View getViewTitle()
-    {
+    public View getViewTitle() {
         return viewTitle;
     }
 
-    public CommonTitleBar setViewTitle(View viewTitle)
-    {
+    public CommonTitleBar setViewTitle(View viewTitle) {
         this.viewTitle = viewTitle;
         initView();
         return this;
     }
 
-    public TextView getTvTitle()
-    {
+    public TextView getTvTitle() {
         return tvTitle;
     }
 
-    public CommonTitleBar setTvTitle(TextView tvTitle)
-    {
+    public CommonTitleBar setTvTitle(TextView tvTitle) {
         this.tvTitle = tvTitle;
         initView();
         return this;
     }
 
-    public EditText getEtTitle()
-    {
+    public EditText getEtTitle() {
         return etTitle;
     }
 
-    public CommonTitleBar setEtTitle(EditText etTitle)
-    {
+    public CommonTitleBar setEtTitle(EditText etTitle) {
         this.etTitle = etTitle;
         initView();
         return this;
     }
 
-    public int getTitleBarBackground()
-    {
+    public int getTitleBarBackground() {
         return titleBarBackground;
     }
 
-    public CommonTitleBar setTitleBarBackground(int titleBarBackground)
-    {
+    public CommonTitleBar setTitleBarBackground(int titleBarBackground) {
         this.titleBarBackground = titleBarBackground;
         initView();
         return this;
     }
 
-    public boolean isLeftViewVisibility()
-    {
+    public boolean isLeftViewVisibility() {
         return leftViewVisibility;
     }
 
-    public CommonTitleBar setLeftViewVisibility(boolean leftViewVisibility)
-    {
+    public CommonTitleBar setLeftViewVisibility(boolean leftViewVisibility) {
         this.leftViewVisibility = leftViewVisibility;
         initView();
         return this;
     }
 
-    public boolean isLeftTextViewVisibility()
-    {
+    public boolean isLeftTextViewVisibility() {
         return leftTextViewVisibility;
     }
 
-    public CommonTitleBar setLeftTextViewVisibility(boolean leftTextViewVisibility)
-    {
+    public CommonTitleBar setLeftTextViewVisibility(boolean leftTextViewVisibility) {
         this.leftTextViewVisibility = leftTextViewVisibility;
         initView();
         return this;
     }
 
-    public boolean isLeftImageViewVisibility()
-    {
+    public boolean isLeftImageViewVisibility() {
         return leftImageViewVisibility;
     }
 
-    public CommonTitleBar setLeftImageViewVisibility(boolean leftImageViewVisibility)
-    {
+    public CommonTitleBar setLeftImageViewVisibility(boolean leftImageViewVisibility) {
         this.leftImageViewVisibility = leftImageViewVisibility;
         initView();
         return this;
     }
 
-    public int getLeftViewBackground()
-    {
+    public int getLeftViewBackground() {
         return leftViewBackground;
     }
 
-    public CommonTitleBar setLeftViewBackground(int leftViewBackground)
-    {
+    public CommonTitleBar setLeftViewBackground(int leftViewBackground) {
         this.leftViewBackground = leftViewBackground;
         initView();
         return this;
     }
 
-    public String getLeftText()
-    {
+    public String getLeftText() {
         return leftText;
     }
 
-    public CommonTitleBar setLeftText(String leftText)
-    {
+    public CommonTitleBar setLeftText(String leftText) {
         this.leftText = leftText;
         initView();
         return this;
     }
 
-    public int getLeftTextViewDrawable()
-    {
+    public int getLeftTextViewDrawable() {
         return leftTextViewDrawable;
     }
 
-    public CommonTitleBar setLeftTextViewDrawable(int leftTextViewDrawable)
-    {
+    public CommonTitleBar setLeftTextViewDrawable(int leftTextViewDrawable) {
         this.leftTextViewDrawable = leftTextViewDrawable;
         initView();
         return this;
     }
 
-    public float getLeftTextSize()
-    {
+    public float getLeftTextSize() {
         return leftTextSize;
     }
 
-    public CommonTitleBar setLeftTextSize(float leftTextSize)
-    {
+    public CommonTitleBar setLeftTextSize(float leftTextSize) {
         this.leftTextSize = leftTextSize;
         initView();
         return this;
     }
 
-    public int getLeftTextColor()
-    {
+    public int getLeftTextColor() {
         return leftTextColor;
     }
 
-    public CommonTitleBar setLeftTextColor(int leftTextColor)
-    {
+    public CommonTitleBar setLeftTextColor(int leftTextColor) {
         this.leftTextColor = leftTextColor;
         initView();
         return this;
     }
 
-    public int getLeftTextViewBackground()
-    {
+    public int getLeftTextViewBackground() {
         return leftTextViewBackground;
     }
 
-    public CommonTitleBar setLeftTextViewBackground(int leftTextViewBackground)
-    {
+    public CommonTitleBar setLeftTextViewBackground(int leftTextViewBackground) {
         this.leftTextViewBackground = leftTextViewBackground;
         initView();
         return this;
     }
 
-    public int getLeftImageDrawable()
-    {
+    public int getLeftImageDrawable() {
         return leftImageDrawable;
     }
 
-    public CommonTitleBar setLeftImageDrawable(int leftImageDrawable)
-    {
+    public CommonTitleBar setLeftImageDrawable(int leftImageDrawable) {
         this.leftImageDrawable = leftImageDrawable;
         initView();
         return this;
     }
 
-    public int getRightViewBackground()
-    {
+    public int getRightViewBackground() {
         return rightViewBackground;
     }
 
-    public CommonTitleBar setRightViewBackground(int rightViewBackground)
-    {
+    public CommonTitleBar setRightViewBackground(int rightViewBackground) {
         this.rightViewBackground = rightViewBackground;
         initView();
         return this;
     }
 
-    public boolean isRightViewVisibility()
-    {
+    public boolean isRightViewVisibility() {
         return rightViewVisibility;
     }
 
-    public CommonTitleBar setRightViewVisibility(boolean rightViewVisibility)
-    {
+    public CommonTitleBar setRightViewVisibility(boolean rightViewVisibility) {
         this.rightViewVisibility = rightViewVisibility;
         initView();
         return this;
     }
 
-    public boolean isRightTextViewVisibility()
-    {
+    public boolean isRightTextViewVisibility() {
         return rightTextViewVisibility;
     }
 
-    public CommonTitleBar setRightTextViewVisibility(boolean rightTextViewVisibility)
-    {
+    public CommonTitleBar setRightTextViewVisibility(boolean rightTextViewVisibility) {
         this.rightTextViewVisibility = rightTextViewVisibility;
         initView();
         return this;
     }
 
-    public boolean isRightImageViewVisibility()
-    {
+    public boolean isRightImageViewVisibility() {
         return rightImageViewVisibility;
     }
 
-    public CommonTitleBar setRightImageViewVisibility(boolean rightImageViewVisibility)
-    {
+    public CommonTitleBar setRightImageViewVisibility(boolean rightImageViewVisibility) {
         this.rightImageViewVisibility = rightImageViewVisibility;
         initView();
         return this;
     }
 
-    public String getRightText()
-    {
+    public String getRightText() {
         return rightText;
     }
 
-    public CommonTitleBar setRightText(String rightText)
-    {
+    public CommonTitleBar setRightText(String rightText) {
         this.rightText = rightText;
         initView();
         return this;
     }
 
-    public float getRightTextSize()
-    {
+    public float getRightTextSize() {
         return rightTextSize;
     }
 
-    public CommonTitleBar setRightTextSize(float rightTextSize)
-    {
+    public CommonTitleBar setRightTextSize(float rightTextSize) {
         this.rightTextSize = rightTextSize;
         initView();
         return this;
     }
 
-    public int getRightTextColor()
-    {
+    public int getRightTextColor() {
         return rightTextColor;
     }
 
-    public CommonTitleBar setRightTextColor(int rightTextColor)
-    {
+    public CommonTitleBar setRightTextColor(int rightTextColor) {
         this.rightTextColor = rightTextColor;
         initView();
         return this;
     }
 
-    public int getRightTextViewBackground()
-    {
+    public int getRightTextViewBackground() {
         return rightTextViewBackground;
     }
 
-    public CommonTitleBar setRightTextViewBackground(int rightTextViewBackground)
-    {
+    public CommonTitleBar setRightTextViewBackground(int rightTextViewBackground) {
         this.rightTextViewBackground = rightTextViewBackground;
         initView();
         return this;
     }
 
-    public int getRightImageDrawable()
-    {
+    public int getRightImageDrawable() {
         return rightImageDrawable;
     }
 
-    public CommonTitleBar setRightImageDrawable(int rightImageDrawable)
-    {
+    public CommonTitleBar setRightImageDrawable(int rightImageDrawable) {
         this.rightImageDrawable = rightImageDrawable;
         initView();
         return this;
     }
 
-    public int getMiddleViewBackground()
-    {
+    public int getMiddleViewBackground() {
         return middleViewBackground;
     }
 
-    public CommonTitleBar setMiddleViewBackground(int middleViewBackground)
-    {
+    public CommonTitleBar setMiddleViewBackground(int middleViewBackground) {
         this.middleViewBackground = middleViewBackground;
         initView();
         return this;
     }
 
-    public boolean isTitleTextViewVisibility()
-    {
+    public boolean isTitleTextViewVisibility() {
         return titleTextViewVisibility;
     }
 
-    public CommonTitleBar setTitleTextViewVisibility(boolean titleTextViewVisibility)
-    {
+    public CommonTitleBar setTitleTextViewVisibility(boolean titleTextViewVisibility) {
         this.titleTextViewVisibility = titleTextViewVisibility;
         initView();
         return this;
     }
 
-    public boolean isSearchVisibility()
-    {
+    public boolean isSearchVisibility() {
         return searchVisibility;
     }
 
-    public CommonTitleBar setSearchVisibility(boolean searchVisibility)
-    {
+    public CommonTitleBar setSearchVisibility(boolean searchVisibility) {
         this.searchVisibility = searchVisibility;
         initView();
         return this;
     }
 
-    public String getTitleText()
-    {
+    public String getTitleText() {
         return titleText;
     }
 
-    public CommonTitleBar setTitleText(String titleText)
-    {
+    public CommonTitleBar setTitleText(String titleText) {
         this.titleText = titleText;
         initView();
         return this;
     }
 
-    public float getTitleTextSize()
-    {
+    public float getTitleTextSize() {
         return titleTextSize;
     }
 
-    public CommonTitleBar setTitleTextSize(float titleTextSize)
-    {
+    public CommonTitleBar setTitleTextSize(float titleTextSize) {
         this.titleTextSize = titleTextSize;
         initView();
         return this;
     }
 
-    public int getTitleTextColor()
-    {
+    public int getTitleTextColor() {
         return titleTextColor;
     }
 
-    public CommonTitleBar setTitleTextColor(int titleTextColor)
-    {
+    public CommonTitleBar setTitleTextColor(int titleTextColor) {
         this.titleTextColor = titleTextColor;
         initView();
         return this;
     }
 
-    public int getTitleTextViewBackground()
-    {
+    public int getTitleTextViewBackground() {
         return titleTextViewBackground;
     }
 
-    public CommonTitleBar setTitleTextViewBackground(int titleTextViewBackground)
-    {
+    public CommonTitleBar setTitleTextViewBackground(int titleTextViewBackground) {
         this.titleTextViewBackground = titleTextViewBackground;
         initView();
         return this;
     }
 
-    public String getSearchHint()
-    {
+    public String getSearchHint() {
         return searchHint;
     }
 
-    public CommonTitleBar setSearchHint(String searchHint)
-    {
+    public CommonTitleBar setSearchHint(String searchHint) {
         this.searchHint = searchHint;
         initView();
         return this;
     }
 
-    public int getSearchHintColor()
-    {
+    public int getSearchHintColor() {
         return searchHintColor;
     }
 
-    public CommonTitleBar setSearchHintColor(int searchHintColor)
-    {
+    public CommonTitleBar setSearchHintColor(int searchHintColor) {
         this.searchHintColor = searchHintColor;
         initView();
         return this;
     }
 
-    public String getTitleSearchText()
-    {
+    public String getTitleSearchText() {
         return titleSearchText;
     }
 
-    public CommonTitleBar setTitleSearchText(String titleSearchText)
-    {
+    public CommonTitleBar setTitleSearchText(String titleSearchText) {
         this.titleSearchText = titleSearchText;
         initView();
         return this;
     }
 
-    public int getTitleSearchTextColor()
-    {
+    public int getTitleSearchTextColor() {
         return titleSearchTextColor;
     }
 
-    public CommonTitleBar setTitleSearchTextColor(int titleSearchTextColor)
-    {
+    public CommonTitleBar setTitleSearchTextColor(int titleSearchTextColor) {
         this.titleSearchTextColor = titleSearchTextColor;
         initView();
         return this;
     }
 
-    public float getTitleSearchTextSize()
-    {
+    public float getTitleSearchTextSize() {
         return titleSearchTextSize;
     }
 
-    public CommonTitleBar setTitleSearchTextSize(float titleSearchTextSize)
-    {
+    public CommonTitleBar setTitleSearchTextSize(float titleSearchTextSize) {
         this.titleSearchTextSize = titleSearchTextSize;
         initView();
         return this;
     }
 
-    public int getTitleSearchBackground()
-    {
+    public int getTitleSearchBackground() {
         return titleSearchBackground;
     }
 
-    public CommonTitleBar setTitleSearchBackground(int titleSearchBackground)
-    {
+    public CommonTitleBar setTitleSearchBackground(int titleSearchBackground) {
         this.titleSearchBackground = titleSearchBackground;
         initView();
         return this;
     }
 
-    public int getTitleSearchTextGravity()
-    {
+    public int getTitleSearchTextGravity() {
         return titleSearchTextGravity;
     }
 
-    public CommonTitleBar setTitleSearchTextGravity(int titleSearchTextGravity)
-    {
+    public CommonTitleBar setTitleSearchTextGravity(int titleSearchTextGravity) {
         this.titleSearchTextGravity = titleSearchTextGravity;
         initView();
         return this;
     }
 
-    public float getEtSearchPaddingLeft()
-    {
+    public float getEtSearchPaddingLeft() {
         return etSearchPaddingLeft;
     }
 
-    public CommonTitleBar setEtSearchPaddingLeft(float etSearchPaddingLeft)
-    {
+    public CommonTitleBar setEtSearchPaddingLeft(float etSearchPaddingLeft) {
         this.etSearchPaddingLeft = etSearchPaddingLeft;
         initView();
         return this;
     }
 
-    public float getEtSearchPaddingTop()
-    {
+    public float getEtSearchPaddingTop() {
         return etSearchPaddingTop;
     }
 
-    public CommonTitleBar setEtSearchPaddingTop(float etSearchPaddingTop)
-    {
+    public CommonTitleBar setEtSearchPaddingTop(float etSearchPaddingTop) {
         this.etSearchPaddingTop = etSearchPaddingTop;
         initView();
         return this;
     }
 
-    public float getEtSearchPaddingRight()
-    {
+    public float getEtSearchPaddingRight() {
         return etSearchPaddingRight;
     }
 
-    public CommonTitleBar setEtSearchPaddingRight(float etSearchPaddingRight)
-    {
+    public CommonTitleBar setEtSearchPaddingRight(float etSearchPaddingRight) {
         this.etSearchPaddingRight = etSearchPaddingRight;
         initView();
         return this;
     }
 
-    public float getEtSearchPaddingBottom()
-    {
+    public float getEtSearchPaddingBottom() {
         return etSearchPaddingBottom;
     }
 
-    public CommonTitleBar setEtSearchPaddingBottom(float etSearchPaddingBottom)
-    {
+    public CommonTitleBar setEtSearchPaddingBottom(float etSearchPaddingBottom) {
         this.etSearchPaddingBottom = etSearchPaddingBottom;
         initView();
         return this;
     }
 
-    public int getEtDrawableLeft()
-    {
+    public int getEtDrawableLeft() {
         return etDrawableLeft;
     }
 
-    public CommonTitleBar setEtDrawableLeft(int etDrawableLeft)
-    {
+    public CommonTitleBar setEtDrawableLeft(int etDrawableLeft) {
         this.etDrawableLeft = etDrawableLeft;
         initView();
         return this;
     }
 
-    public int getEtDrawableRight()
-    {
+    public int getEtDrawableRight() {
         return etDrawableRight;
     }
 
-    public CommonTitleBar setEtDrawableRight(int etDrawableRight)
-    {
+    public CommonTitleBar setEtDrawableRight(int etDrawableRight) {
         this.etDrawableRight = etDrawableRight;
         initView();
         return this;
     }
 
-    public CommonTitleBar setOnLeftClickListener(OnClickListener onLeftClickListener)
-    {
+    public CommonTitleBar setOnLeftClickListener(OnClickListener onLeftClickListener) {
         this.OnLeftClickListener = onLeftClickListener;
         return this;
     }
 
-    public CommonTitleBar setOnRightClickListener(OnClickListener onRightClickListener)
-    {
+    public CommonTitleBar setOnRightClickListener(OnClickListener onRightClickListener) {
         this.OnRightClickListener = onRightClickListener;
         return this;
     }
 
-    public CommonTitleBar setOnSearchClickListener(OnClickListener onSearchClickListener)
-    {
+    public CommonTitleBar setOnSearchClickListener(OnClickListener onSearchClickListener) {
         this.OnSearchClickListener = onSearchClickListener;
         return this;
     }

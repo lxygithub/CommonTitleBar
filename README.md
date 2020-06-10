@@ -192,15 +192,14 @@
 #### maven
     <dependency>
       <groupId>com.mewlxy.commontitlebar</groupId>
-      <artifactId>CommonTitleBar</artifactId>
-      <version>1.1.1</version>
+      <artifactId>library</artifactId>
+      <version>1.2.0</version>
       <type>pom</type>
     </dependency>
 #### gradle
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.1.1'
+    implementation 'com.mewlxy.commontitlebar:library:1.2.0'
 #### lvy
-    compile 'com.mewlxy.commontitlebar:CommonTitleBar:1.1.1'
-    <dependency org='com.mewlxy.commontitlebar' name='CommonTitleBar' rev='1.1.1'>
-      <artifact name='CommonTitleBar' ext='pom' ></artifact>
+    <dependency org='com.mewlxy.commontitlebar' name='library' rev='1.2.0'>
+      <artifact name='library' ext='pom' ></artifact>
     </dependency>
 
